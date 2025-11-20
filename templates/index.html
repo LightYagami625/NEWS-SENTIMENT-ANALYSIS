@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>News Sentiment Analysis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  
+</head>
+<body>
+  <div class="container">
+    <h1>News Sentiment Analysis</h1>
+    <p class="subtitle">Click the button below to scrape and analyze news sentiment</p>
+
+    <!-- clicking this button issues a GET /scrape and the server returns a rendered page -->
+    <form action="{{ url_for('scrape_and_analyze') }}" method="get">
+      <button type="submit">Scrape &amp; Analyze Headlines</button>
+    </form>
+<!-- backchod error message -->
+    {% if error %}
+      <div class="result"><div class="error-message">{{ error }}</div></div>
+    {% endif %}
+
+    {% if message %}
+      <div class="result">
+        <div class="message">{{ message }}</div>
+
+        <div class="stats-container">
+          <div class="stat-box">
+            <div class="stat-label">Overall Sentiment</div>
+            <div class="stat-value">
+              {% set cls = 'sentiment-neutral' %}
+              {% if overall_sentiment == 'positive' %}{% set cls = 'sentiment-positive' %}{% elif overall_sentiment == 'negative' %}{% set cls = 'sentiment-negative' %}{% endif %}
+              <span class="overall-sentiment {{ cls }}">{{ sentiment_text or overall_sentiment|upper }}</span>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-label">Average Score</div>
+            <div class="stat-value">{{ '%.2f'|format(average_score|float) }}</div>
+          </div>
+        </div>
+
+        <!-- {% if data and data|length > 0 %}
+          <h3 style="color:#333; margin-bottom:15px;">Headlines ({{ data|length }})</h3>
+          <div class="headlines-list">
+            {% for headline in data %}
+              <div class="headline-item">
+                <div class="headline-title">{{ loop.index }}. {{ headline.title }}</div>
+                <div class="headline-source">Source: {{ headline.source or 'Unknown' }}</div>
+                <div>
+                  {% set hcls = 'sentiment-neutral' %}
+                  {% if headline.sentiment == 'positive' %}{% set hcls = 'sentiment-positive' %}{% elif headline.sentiment == 'negative' %}{% set hcls = 'sentiment-negative' %}{% endif %}
+                  <span class="sentiment-badge {{ hcls }}">{{ headline.sentiment|upper }}</span>
+                  <span class="sentiment-score">Score: {{ '%.2f'|format(headline.score|float) }}</span>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="no-data">No headlines found</div>
+        {% endif %}   -->
+      </div> 
+    {% endif %}
+  </div>
+</body>
+</html>
