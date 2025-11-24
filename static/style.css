@@ -65,11 +65,11 @@ body {
 .main-content {
     display: flex;
     gap: 2rem;
-    
+
     /* REMOVED: align-items: flex-start (This prevents them from matching heights) */
-    
+
     /* CHANGED: 100vh - 200px accounts for the Header space so the bottom doesn't cut off */
-    height: calc(100vh - 200px); 
+    height: calc(100vh - 200px);
     min-height: 500px;
 }
 
@@ -84,7 +84,8 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Ensures the scrollbar stays inside the list area */
+    overflow: hidden;
+    /* Ensures the scrollbar stays inside the list area */
 }
 
 /* Form Controls */
@@ -237,9 +238,12 @@ select:focus {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    overflow-y: auto;  /* Enables scrolling */
-    flex: 1;           /* Fills the remaining height */
-    padding-right: 8px; /* Adds space so scrollbar doesn't cover text */
+    overflow-y: auto;
+    /* Enables scrolling */
+    flex: 1;
+    /* Fills the remaining height */
+    padding-right: 8px;
+    /* Adds space so scrollbar doesn't cover text */
 }
 
 .headline-item {
@@ -313,8 +317,13 @@ select:focus {
 /* Responsive */
 @media (max-width: 768px) {
     .main-content {
-        
         flex-direction: column;
+        height: auto;
+    }
+
+    .headlines-list {
+        height: 60vh;
+        min-height: 450px;
     }
 
     .app-header h1 {
@@ -334,7 +343,7 @@ select:focus {
     }
 }
 
-.foot{
+.foot {
     border-radius: 10px;
     /* padding: 10px 200px 10px 200px; */
     margin-top: 20px;
@@ -354,6 +363,7 @@ select:focus {
     text-decoration: none;
     margin: 0 10px;
 }
+
 .foot a:hover {
     text-decoration: underline;
 }
