@@ -336,10 +336,10 @@ select:focus {
 
 .foot{
     border-radius: 10px;
-    padding: 10px 200px 10px 200px;
+    /* padding: 10px 200px 10px 200px; */
     margin-top: 20px;
     text-align: center;
-    background-color: var(--surface-color);
+    /* background-color: var(--surface-color); */
     color: #908caa;
 }
 
