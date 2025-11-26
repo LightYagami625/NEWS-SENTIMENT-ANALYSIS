@@ -3,7 +3,7 @@ from datetime import date
 import os
 
 # Define the database name
-DB_NAME = "headlines.db"
+DB_NAME = "./headlines.db"
 
 def get_connection():
     """Establishes a connection to the SQLite database."""

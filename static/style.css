@@ -420,3 +420,60 @@ select:focus {
 .foot a:hover {
     text-decoration: underline;
 }
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(25, 23, 36, 0.9);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.loading-bar-container {
+    width: 300px;
+    height: 6px;
+    background-color: var(--surface-color);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.loading-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0%;
+    animation: loading 2s infinite ease-in-out;
+    border-radius: 3px;
+}
+
+.loading-overlay p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+@keyframes loading {
+    0% {
+        width: 0%;
+        margin-left: 0;
+    }
+
+    50% {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    100% {
+        width: 0%;
+        margin-left: 100%;
+    }
+}

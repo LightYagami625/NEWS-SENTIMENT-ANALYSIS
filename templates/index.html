@@ -4,20 +4,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>News Sentiment Analysis</title>
+  <title>News-Senti</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon.ico') }}">
+
 </head>
 
 <body>
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="loading-bar-container">
+      <div class="loading-bar"></div>
+    </div>
+    <p>Analyzing Headlines...</p>
+  </div>
+
   <div class="container">
     <header class="app-header">
-      <h1>News Sentiment Analysis</h1>
-      <!-- <p class="subtitle">Click the button below to scrape and analyze news sentiment from various sources</p> -->
+      <h1>NEWS SENTIMENT ANALYSIS</h1>
+      <p class="subtitle">A Sentiment Analyzer Tool for News Headlines</p>
     </header>
 
     <div class="main-content">
       <div class="left-section">
-        <form action="{{ url_for('scrape_and_analyze') }}" method="get" class="controls-form">
+        <form action="{{ url_for('scrape_and_analyze') }}" method="get" class="controls-form" id="scrape-form">
           <div class="search-group">
             <input type="text" placeholder="Search topic..." name="query" value="{{ query or '' }}" />
             <button type="submit" class="btn-search">Search</button>
@@ -120,6 +130,12 @@
       <p>Developed and Built by -SWAYAM KESARKAR</p>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('scrape-form').addEventListener('submit', function () {
+      document.getElementById('loading-overlay').style.display = 'flex';
+    });
+  </script>
 </body>
 
 </html>
