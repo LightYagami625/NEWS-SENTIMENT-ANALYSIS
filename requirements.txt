@@ -3,3 +3,4 @@ pandas
 requests
 flask
 beautifulsoup4
+gunicorn
